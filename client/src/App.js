@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+// import { userSelector, useDispatch } from "react-redux";
+// import { loginUser, clearUser } from './reducer/userSlice';
+import { loginUser, clearUser } from './reducer/userSlice';
+import firebase from './firebase.js';
 
 import Header from './components/layout/Header'
 import Main from './components/layout/Main'
@@ -13,6 +17,18 @@ import Join from './components/user/Join'
 
 
 const App = () => {
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      console.log("userInfo: ", userInfo)
+    })
+  }, []);
+
+  useEffect(() => {
+    firebase.auth().signOut();
+  }, []);
+
+
   return (
     <>
       <Header />

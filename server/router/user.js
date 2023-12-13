@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // 스키마
-// const { User } = require("../model/User.js");
+const { User } = require("../model/User.js");
 const { Counter } = require("../model/Counter.js")
 
 router.post("/join", (req, res) => {
